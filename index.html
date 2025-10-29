@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Playlist Musique</title>
+    <style>
+        body {
+            background-image: url(images/background.png);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .playlist-container {
+            
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 50px;
+            background-color: #e4f7f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .chanson {
+            align-items: center;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .chanson {
+        display: block;
+        }
+
+        .album-cover, .chanson-info, .chanson-duree {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .chanson:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .album-cover {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            margin-right: 15px;
+            border: 2px solid #ddd;
+        }
+        
+        .chanson-info {
+            width:85%
+        }
+        
+        .chanson-titre {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .chanson-artiste {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .chanson-duree {
+            color: #888;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+        .audio-player {
+            background: linear-gradient(135deg, #ea6666 0%,#181818 27%, #18e414 60%,#fff 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .audio-player h3 {
+            margin: 0 0 15px 0;
+            font-size: 20px;
+        }
+        
+        .audio-player audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        #encours{
+            font-size: 14px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+
+    </style>
+</head>
+<body onload="init()">
+    <div class="playlist-container">
+        <h1>Songs Against Genocide - Concert</h1>
+        <div class="audio-player">
+            <h3>🎧 Lecteur Audio</h3>
+            <audio id="audioPlayer" controls>
+                <source src="" type="audio/mpeg">
+                Votre navigateur ne supporte pas l'élément audio.
+            </audio>
+            <div class="encours" id="encours">
+                Sélectionnez une chanson
+            </div>
+        </div>  
+        <div id="chansons_list">
+
+        </div>
+ 
+      
+    </div>
+
+    <script>
+        titre=["From Santiago, I call you Palestine","I Am a Human",
+        "No Pasarán!","Stand Tall!"]
+        artiste=["Inti-Illimani","Anna","La Pasionaria","Salvador Allende & Victor J."]
+        duree=[3.34,3.54,4.37,3.50]
+        function jouerMusique(numero) {
+            //alert("🎶 Lecture de : " + titre[numero]);
+            // Ici vous pouvez ajouter la logique pour jouer la musique
+            document.getElementById("encours").innerHTML=titre[numero];
+            const audioPlayer=document.getElementById("audioPlayer");
+            audioPlayer.src="mp3/"+titre[numero]+".mp3"
+            audioPlayer.play()
+        }
+
+        function init(){
+            var liste=""
+            for (i=0;i<titre.length;i++){
+                liste+=" <div class='chanson' onclick='jouerMusique("+i+")'><img src='images/"+titre[i]+".jpg' alt='' class='album-cover'><div class='chanson-info'><div class='chanson-titre'>"+titre[i]+"</div><div class='chanson-artiste'>"+artiste[i]+"</div></div><div class='chanson-duree'>0"+duree[i]+"</div></div>";
+            }
+            document.getElementById("chansons_list").innerHTML=liste
+        }
+    </script>
+</body>
+</html>
