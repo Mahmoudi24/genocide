@@ -6,7 +6,7 @@
     <title>Ma Playlist Musique</title>
     <style>
         body {
-            background-image: url(images/background.png);
+            background-image: url(background.png);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
@@ -144,14 +144,14 @@
             // Ici vous pouvez ajouter la logique pour jouer la musique
             document.getElementById("encours").innerHTML=titre[numero];
             const audioPlayer=document.getElementById("audioPlayer");
-            audioPlayer.src="mp3/"+titre[numero]+".mp3"
+            audioPlayer.src=""+titre[numero]+".mp3"
             audioPlayer.play()
         }
 
         function init(){
             var liste=""
             for (i=0;i<titre.length;i++){
-                liste+=" <div class='chanson' onclick='jouerMusique("+i+")'><img src='images/"+titre[i]+".jpg' alt='' class='album-cover'><div class='chanson-info'><div class='chanson-titre'>"+titre[i]+"</div><div class='chanson-artiste'>"+artiste[i]+"</div></div><div class='chanson-duree'>0"+duree[i]+"</div></div>";
+                liste+=" <div class='chanson' onclick='jouerMusique("+i+")'><img src='"+titre[i]+".jpg' alt='' class='album-cover'><div class='chanson-info'><div class='chanson-titre'>"+titre[i]+"</div><div class='chanson-artiste'>"+artiste[i]+"</div></div><div class='chanson-duree'>0"+duree[i]+"</div></div>";
             }
             document.getElementById("chansons_list").innerHTML=liste
         }
